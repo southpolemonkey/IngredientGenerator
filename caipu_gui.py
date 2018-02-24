@@ -29,27 +29,7 @@ def conn_db():
 	conn = psycopg2.connect(database = "caipu", user = "postgres", password = "dd123456", host = "127.0.0.1", port = "5432")
 	var.set("数据库连接成功")
 	cur = conn.cursor()
-
-
-# def test():
-# 	t = tk.Toplevel()
-# 	t.wm_title("test")
-# 	t.geometry("300x400")
-
-# 	Label(t, text='日期').grid(row=0)
-# 	Label(t, text='标题').grid(row=1)
-
-# 	e1 = Entry(t)
-# 	e2 = Entry(t)
-
-# 	e1.grid(row=0, column=1)
-# 	e2.grid(row=1, column=1)
-
-# 	button1 = Button(t, text='提交', width=10,height=2)
-# 	button2 = Button(t, text='取消', width=10,height=2)
-# 	button1.grid(row=2, column=0)
-# 	button2.grid(row=2, column=1)
-
+	
 
 def create_menu():
 	var.set("新建菜单")
@@ -273,9 +253,5 @@ b4.pack()
 b5 = tk.Button(window, text='历史订单', width=15,
               height=2, command=history_order)
 b5.pack()
-
-# b6 = tk.Button(window, text='测试', width=15,
-#               height=2, command=test)
-# b6.pack()
 
 window.mainloop()
