@@ -19,34 +19,35 @@ l = tk.Label(window, textvariable=var, bg='red', font=('Arial', 12), width=15,
 #l = tk.Label(window, text='OMG! this is TK!', bg='green', font=('Arial', 12), width=15, height=2)
 l.pack()
 
-conn = psycopg2.connect(database = "caipu", user = "postgres", password = "postgres", host = "127.0.0.1", port = "5432")
+# Need to change user and password based on your setting
+conn = psycopg2.connect(database = "caipu", user = "postgres", password = "dd123456", host = "127.0.0.1", port = "5432")
 cur = conn.cursor()
 
 
 def conn_db():
-	conn = psycopg2.connect(database = "caipu", user = "postgres", password = "postgres", host = "127.0.0.1", port = "5432")
+	conn = psycopg2.connect(database = "caipu", user = "postgres", password = "dd123456", host = "127.0.0.1", port = "5432")
 	var.set("数据库连接成功")
 	cur = conn.cursor()
 
 
-def test():
-	t = tk.Toplevel()
-	t.wm_title("test")
-	t.geometry("300x400")
+# def test():
+# 	t = tk.Toplevel()
+# 	t.wm_title("test")
+# 	t.geometry("300x400")
 
-	Label(t, text='日期').grid(row=0)
-	Label(t, text='标题').grid(row=1)
+# 	Label(t, text='日期').grid(row=0)
+# 	Label(t, text='标题').grid(row=1)
 
-	e1 = Entry(t)
-	e2 = Entry(t)
+# 	e1 = Entry(t)
+# 	e2 = Entry(t)
 
-	e1.grid(row=0, column=1)
-	e2.grid(row=1, column=1)
+# 	e1.grid(row=0, column=1)
+# 	e2.grid(row=1, column=1)
 
-	button1 = Button(t, text='提交', width=10,height=2)
-	button2 = Button(t, text='取消', width=10,height=2)
-	button1.grid(row=2, column=0)
-	button2.grid(row=2, column=1)
+# 	button1 = Button(t, text='提交', width=10,height=2)
+# 	button2 = Button(t, text='取消', width=10,height=2)
+# 	button1.grid(row=2, column=0)
+# 	button2.grid(row=2, column=1)
 
 
 def create_menu():
@@ -102,7 +103,7 @@ def create_menu():
 			excel.append(row[0])
 
 		df = pd.DataFrame({'配料':excel})
-		writer = ExcelWriter(shopping_list_name + '.xlsx')
+		writer = ExcelWriter('C:/Users/Administrator/Desktop/' + shopping_list_name + '.xlsx')
 		df.to_excel(writer, 'Sheet1', index=False)
 		writer.save()
 
@@ -131,7 +132,7 @@ def create_menu():
 	# 增加菜名 四种按钮
 	addbox1 = tk.Button(windows1, text="荤菜", width=8, command=lambda: add_box(1))
 	addbox1.grid(row=3,column=0)
-	addbox2 = tk.Button(windows1, text="冷菜", width=8, command=lambda: add_box(2))
+	addbox2 = tk.Button(windows1, text="素菜", width=8, command=lambda: add_box(2))
 	addbox2.grid(row=3,column=1)
 	addbox3 = tk.Button(windows1, text="点心", width=8, command=lambda: add_box(3))
 	addbox3.grid(row=4,column=0)
@@ -265,8 +266,8 @@ b5 = tk.Button(window, text='历史订单', width=15,
               height=2, command=history_order)
 b5.pack()
 
-b6 = tk.Button(window, text='测试', width=15,
-              height=2, command=test)
-b6.pack()
+# b6 = tk.Button(window, text='测试', width=15,
+#               height=2, command=test)
+# b6.pack()
 
 window.mainloop()
